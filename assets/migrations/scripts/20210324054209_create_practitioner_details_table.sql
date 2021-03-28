@@ -17,7 +17,8 @@
 -- // create practitioner details table
 -- Migration SQL that makes the change goes here.
 CREATE TABLE team.practitioner_details (
-	id int4 NOT NULL,	
+	id int4 NOT NULL,
+	practitioner_id	int4 NOT NULL,
 	created_date timestamp NULL,
 	email varchar(255) NOT NULL,
 	enabled bool NULL, 
@@ -34,8 +35,7 @@ CREATE TABLE team.practitioner_details (
 	ss_no varchar(255) NULL, 	
 	app_version varchar(255) NULL,
 	is_resync varchar NULL DEFAULT ''::character varying, 
-	on_maternity_leave bool NULL DEFAULT false, 
-	CONSTRAINT uk_r43af9ap4edm43mmtq01oddj6 UNIQUE (username),
+	on_maternity_leave bool NULL DEFAULT false,	
 	CONSTRAINT practitioner_details_pkey PRIMARY KEY (id),
 	CONSTRAINT fk_8yylg530ncoeoqof76not1km3 FOREIGN KEY (parent_user_id) REFERENCES team.practitioner_details(id),
 	CONSTRAINT fk_ryd9oryrl6ax5slvr3qihderk FOREIGN KEY (creator) REFERENCES team.practitioner_details(id)
@@ -44,7 +44,7 @@ WITH (
     OIDS = FALSE
 ) TABLESPACE ${core_tablespace};
 
-CREATE INDEX practitioner_details_username_index ON team.practitioner_details (username);
+CREATE INDEX practitioner_details_first_name_index ON team.practitioner_details (first_name);
 
 -- //@UNDO
 -- SQL to undo the change goes here.
