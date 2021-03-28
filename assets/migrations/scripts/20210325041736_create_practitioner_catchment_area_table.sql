@@ -23,7 +23,7 @@ CREATE TABLE team.practitioner_catchment_area (
 	location_id int4 NULL,
 	parent_location_id int4 NULL,
 	modified_date timestamp NULL,
-	user_id int4 NULL,
+	practitioner_id int4 NULL,
 	CONSTRAINT practitioner_catchment_area_pkey PRIMARY KEY (id)
 );
 
