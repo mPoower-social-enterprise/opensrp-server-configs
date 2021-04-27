@@ -25,7 +25,7 @@ return query
     select sd.expirey_date::text,p.id::bigint product_id,sd.id::bigint stock_id,p.description::text product_name,
     sd.debit::int quantity,sd.receive_date::text, sd."year"::int,sd."month"::int,sd."timestamp"::bigint from core."_stock_details" as sd
     join core.product p on sd.product_id = p.id
-    join team.practitioner pr on sd.sell_or_pass_to = pr.id where u.username = _user_name and sd."timestamp" > _timestamp;
+    join team.practitioner pr on sd.sell_or_pass_to = pr.id where pr.username = _user_name and sd."timestamp" > _timestamp;
 
 end;
 $function$
